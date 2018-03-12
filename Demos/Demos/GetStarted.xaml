@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:de="clr-namespace:ModelerClient.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             x:Class="Demos.GetStarted">
+    <de:Canvas>
+        <de:Box Width="50" Height="50" X="30" Y="30" BackgroundColor="green" />
+        <de:Circle Width="50" Height="50" X="130" Y="70" BackgroundColor="#FF000000" />
+    </de:Canvas>
+</ContentPage>

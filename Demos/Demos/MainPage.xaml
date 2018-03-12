@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demos"
+             x:Class="Demos.MainPage">
+    <StackLayout Orientation="Vertical" Spacing="10">
+        <Button x:Name="GetStarted" Text="Get Started"/>
+        <Button x:Name="WithLayout" Text="With Layout" />
+        <Button x:Name="TemplateItems" Text="ItemsTemplate"/>
+        <Button x:Name="ZoomCanvas" Text="Zoom Canvas"/>
+    </StackLayout>
+
+</ContentPage>
