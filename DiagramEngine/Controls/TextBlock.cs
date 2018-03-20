@@ -97,7 +97,7 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
                 TextSize = FontSize
             })
             {
-                canvas.DrawText(Text, 0, this.boundsMinusMargin.Height - paint.FontMetrics.Descent, paint);
+                canvas.DrawText(Text, Padding.Left, Padding.Top + FontSize - paint.FontMetrics.Descent, paint);
             }
         }
     }
