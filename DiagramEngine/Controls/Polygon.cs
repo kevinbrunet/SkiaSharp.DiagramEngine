@@ -1,8 +1,8 @@
-﻿using ModelerClient.DiagramEngine.Helpers;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class Polygon : Core.View
     {
@@ -51,11 +51,11 @@ namespace ModelerClient.DiagramEngine.Controls
 
         public override void Draw(SKCanvas canvas)
         {
-            SkiaSharp.SKMatrix scaleMatrix = SkiaSharp.SKMatrix.MakeIdentity();
+            SKMatrix scaleMatrix = SKMatrix.MakeIdentity();
             if (AutoScale)
             {
                 var b = Path.Bounds;
-                scaleMatrix = SkiaSharp.SKMatrix.MakeScale(this.boundsMinusMargin.Width / b.Right,this.boundsMinusMargin.Height / b.Bottom);
+                scaleMatrix = SKMatrix.MakeScale(this.boundsMinusMargin.Width / b.Right,this.boundsMinusMargin.Height / b.Bottom);
                 var invert = scaleMatrix.Invert();
                 canvas.Concat(ref scaleMatrix);
                 scaleMatrix = invert;

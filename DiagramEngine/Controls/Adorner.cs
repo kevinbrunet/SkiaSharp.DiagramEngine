@@ -1,12 +1,12 @@
-﻿using ModelerClient.DiagramEngine.Helpers;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using SkiaSharp;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class Adorner : Core.Layoutable
     {
 
-        public override bool IsPointInside(SKPoint point, SkiaSharp.SKMatrix transfromStack)
+        public override bool IsPointInside(SKPoint point, SKMatrix transfromStack)
         {
             return base.IsPointInside(point, transfromStack.Translate(-this.Parent.Padding.Left, -this.Parent.Padding.Top));
         }

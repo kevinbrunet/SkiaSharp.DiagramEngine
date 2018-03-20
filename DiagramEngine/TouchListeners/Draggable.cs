@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ModelerClient.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 
-namespace ModelerClient.DiagramEngine.TouchListeners
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners
 {
     public class Draggable : Base
     {

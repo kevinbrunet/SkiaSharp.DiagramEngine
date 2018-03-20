@@ -3,11 +3,11 @@ using System.Linq;
 using System.Collections.Generic;
 using SkiaSharp;
 using Xamarin.Forms;
-using ModelerClient.DiagramEngine.Helpers;
-using ModelerClient.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using SkiaSharp.Views.Forms;
 
-namespace ModelerClient.DiagramEngine.Core
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Core
 {
     [ContentProperty("Children")]
     public class Element : Visual, IElement
@@ -173,7 +173,7 @@ namespace ModelerClient.DiagramEngine.Core
 
         #region Arrange
         protected SKRect _childrenBounds;
-        protected SkiaSharp.SKMatrix _childrenVisualTransform;
+        protected SKMatrix _childrenVisualTransform;
 
         protected override void ArrangeCore(SKRect finalRect)
         {
@@ -213,8 +213,8 @@ namespace ModelerClient.DiagramEngine.Core
         public override void Render(SKCanvas canvas)
         {
             base.Render(canvas);
-            SkiaSharp.SKMatrix visual = _childrenVisualTransform;
-            SkiaSharp.SKMatrix invert = visual.Invert();
+            SKMatrix visual = _childrenVisualTransform;
+            SKMatrix invert = visual.Invert();
             canvas.Concat(ref visual);
             RenderChildren(canvas);
             canvas.Concat(ref invert);
@@ -251,7 +251,7 @@ namespace ModelerClient.DiagramEngine.Core
             return GetElementAtPoint(point, predicate, this._childrenVisualTransform);
         }
 
-        public virtual IElement GetElementAtPoint(SKPoint point, Func<IElement, bool> predicate, SkiaSharp.SKMatrix transformStack)
+        public virtual IElement GetElementAtPoint(SKPoint point, Func<IElement, bool> predicate, SKMatrix transformStack)
         {
             IList<IElement> items;
             if (predicate != null)

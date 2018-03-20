@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Abstracts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts
 {
     public interface IItemsTemplate
     {

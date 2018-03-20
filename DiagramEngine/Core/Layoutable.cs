@@ -1,9 +1,9 @@
 ﻿using System;
-using ModelerClient.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Core
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Core
 {
     public class Layoutable : View, ILayoutable
     {

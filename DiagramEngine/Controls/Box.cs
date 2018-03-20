@@ -1,6 +1,6 @@
-﻿using ModelerClient.DiagramEngine.Core;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class Box : View
     {

@@ -1,6 +1,6 @@
-﻿using ModelerClient.DiagramEngine.Abstracts;
-using ModelerClient.DiagramEngine.Core;
-using ModelerClient.DiagramEngine.Helpers;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
@@ -10,17 +10,17 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class ZoomCanvas : Canvas
     {
 
         private bool gestureActivated = false;
 
-        private SkiaSharp.SKMatrix lastTranslateTransformation = SkiaSharp.SKMatrix.MakeIdentity();
-        private SkiaSharp.SKMatrix lastScaleTransformation = SkiaSharp.SKMatrix.MakeIdentity();
-        private SkiaSharp.SKMatrix translateTransformation = SkiaSharp.SKMatrix.MakeIdentity();
-        private SkiaSharp.SKMatrix scaleTransformation = SkiaSharp.SKMatrix.MakeIdentity();
+        private SKMatrix lastTranslateTransformation = SKMatrix.MakeIdentity();
+        private SKMatrix lastScaleTransformation = SKMatrix.MakeIdentity();
+        private SKMatrix translateTransformation = SKMatrix.MakeIdentity();
+        private SKMatrix scaleTransformation = SKMatrix.MakeIdentity();
         private readonly PinchGestureRecognizer pinchGesture = new PinchGestureRecognizer();
         private readonly PanGestureRecognizer panGesture = new PanGestureRecognizer();
 
@@ -57,7 +57,7 @@ namespace ModelerClient.DiagramEngine.Controls
                {
                    scaleFactor = Convert.ToSingle(o);
                }
-               scaleTransformation = SkiaSharp.SKMatrix.MakeScale((float)scaleFactor, (float)scaleFactor);
+               scaleTransformation = SKMatrix.MakeScale((float)scaleFactor, (float)scaleFactor);
                surface.Transformation = translateTransformation.Concat(scaleTransformation);
            });
             IncrementalZoomCommand = new Command(o =>
@@ -169,7 +169,7 @@ namespace ModelerClient.DiagramEngine.Controls
             return overlaySurface.GetElementAtPoint(point,predicate) ?? base.GetElementAtPoint(point,predicate);
         }
 
-        public override IElement GetElementAtPoint(SKPoint point, Func<IElement, bool> predicate, SkiaSharp.SKMatrix transformationsStack)
+        public override IElement GetElementAtPoint(SKPoint point, Func<IElement, bool> predicate, SKMatrix transformationsStack)
         {
             return overlaySurface.GetElementAtPoint(point,predicate,transformationsStack) ?? base.GetElementAtPoint(point, predicate, transformationsStack);
         }

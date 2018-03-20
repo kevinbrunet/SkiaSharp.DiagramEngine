@@ -7,6 +7,7 @@
         <Button x:Name="GetStarted" Text="Get Started"/>
         <Button x:Name="WithLayout" Text="With Layout" />
         <Button x:Name="TemplateItems" Text="ItemsTemplate"/>
+        <Button x:Name="HierarchicalTemplateItems" Text="Hierarchical ItemsTemplate"/>
         <Button x:Name="ZoomCanvas" Text="Zoom Canvas"/>
     </StackLayout>
 

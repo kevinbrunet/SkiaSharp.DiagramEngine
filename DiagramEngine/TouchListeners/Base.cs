@@ -1,11 +1,11 @@
-﻿using ModelerClient.DiagramEngine.Abstracts;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.TouchListeners
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners
 {
     [ContentProperty("Next")]
     public class Base : BindableObject, ITouchListener

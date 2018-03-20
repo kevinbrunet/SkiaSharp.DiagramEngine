@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ModelerClient.DiagramEngine.Abstracts;
-using ModelerClient.DiagramEngine.Core;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Layouts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
 {
     public class Base : BindableObject, Abstracts.ILayout
     {

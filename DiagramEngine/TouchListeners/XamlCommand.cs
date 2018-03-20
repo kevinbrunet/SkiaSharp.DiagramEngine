@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
-using ModelerClient.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.TouchListeners
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners
 {
     public class XamlCommand : Base
     {

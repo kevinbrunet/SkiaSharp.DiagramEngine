@@ -1,4 +1,4 @@
-﻿using ModelerClient.DiagramEngine.Helpers;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Core
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Core
 {
     public class View : Element
     {

@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-namespace ModelerClient.DiagramEngine.Abstracts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts
 {
     /// <summary>
     /// Réprésente un élement visuel

@@ -1,7 +1,7 @@
 ﻿using System;
 using SkiaSharp;
 
-namespace ModelerClient.DiagramEngine.Helpers
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers
 {
     public static class FloatUtil
     {

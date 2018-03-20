@@ -1,8 +1,8 @@
-﻿using ModelerClient.DiagramEngine.Abstracts;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace ModelerClient.DiagramEngine.Core
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Core
 {
     public class ElementsCollection : ObservableCollection<IElement>
     {

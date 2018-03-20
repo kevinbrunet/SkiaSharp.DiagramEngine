@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SkiaSharp.Views.Forms;
 
-namespace ModelerClient.DiagramEngine.Abstracts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts
 {
     /// <summary>
     /// Permet de gerer les evenements de clic ou de toucher sur le canvas

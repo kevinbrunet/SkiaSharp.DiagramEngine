@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Layouts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
 {
     public class DefinitionCollection<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable where T : IDefinition
     {

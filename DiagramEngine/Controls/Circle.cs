@@ -1,10 +1,10 @@
-﻿using ModelerClient.DiagramEngine.Core;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class Circle : View
     {

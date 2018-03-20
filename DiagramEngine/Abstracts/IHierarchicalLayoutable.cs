@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Abstracts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts
 {
     /// <summary>
     /// Ajoute une notion de layout hierarchique aux enfants

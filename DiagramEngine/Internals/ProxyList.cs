@@ -8,7 +8,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
-namespace ModelerClient.DiagramEngine.Internals
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Internals
 {
     internal sealed class ListProxy : IList,IReadOnlyList<object>, INotifyCollectionChanged
     {

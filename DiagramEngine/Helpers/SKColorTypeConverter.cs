@@ -7,7 +7,7 @@ using System.Linq;
 using System.Globalization;
 using Xamarin.Forms.Internals;
 
-namespace ModelerClient.DiagramEngine.Helpers
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers
 {
     public class SKColorTypeConverter : TypeConverter
     {

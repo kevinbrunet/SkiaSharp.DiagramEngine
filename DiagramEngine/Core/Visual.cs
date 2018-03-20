@@ -1,9 +1,9 @@
 ﻿using SkiaSharp;
 using Xamarin.Forms;
-using ModelerClient.DiagramEngine.Abstracts;
-using ModelerClient.DiagramEngine.Helpers;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 
-namespace ModelerClient.DiagramEngine.Core
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Core
 {
     public abstract class Visual : BindableObject, IVisual
     {
@@ -14,7 +14,7 @@ namespace ModelerClient.DiagramEngine.Core
         public static readonly BindableProperty WidthProperty = BindableProperty.Create(nameof(Width), typeof(float), typeof(Visual), float.NaN, propertyChanged: InvalidatePropertyChanged);
         public static readonly BindableProperty HeightProperty = BindableProperty.Create(nameof(Height), typeof(float), typeof(Visual), float.NaN, propertyChanged: InvalidatePropertyChanged);
 
-        public static readonly BindableProperty TransformationProperty = BindableProperty.Create(nameof(Visual.Transformation), typeof(SkiaSharp.SKMatrix?), typeof(Visual), null, propertyChanged: TransformationPropertyChanged);
+        public static readonly BindableProperty TransformationProperty = BindableProperty.Create(nameof(Visual.Transformation), typeof(SKMatrix?), typeof(Visual), null, propertyChanged: TransformationPropertyChanged);
         public static readonly BindableProperty TransformationPivotProperty = BindableProperty.Create(nameof(TransformationPivot), typeof(SKPoint), typeof(Visual), new SKPoint(0.5f,0.5f), propertyChanged: TransformationPropertyChanged);
 
 
@@ -49,11 +49,11 @@ namespace ModelerClient.DiagramEngine.Core
             }
         }
 
-        public SkiaSharp.SKMatrix? Transformation
+        public SKMatrix? Transformation
         {
             get
             {
-                return (SkiaSharp.SKMatrix?)GetValue(TransformationProperty);
+                return (SKMatrix?)GetValue(TransformationProperty);
             }
             set
             {
@@ -134,7 +134,6 @@ namespace ModelerClient.DiagramEngine.Core
         }
 
         #endregion
-
 
         #region Measure
 
@@ -288,7 +287,7 @@ namespace ModelerClient.DiagramEngine.Core
 
         internal bool ArrangeInProgress;
 
-        private SkiaSharp.SKMatrix computedTransformation;
+        private SKMatrix computedTransformation;
 
         internal bool NeverTransform = true;
 
@@ -372,15 +371,15 @@ namespace ModelerClient.DiagramEngine.Core
 
             if (NeverTransform || TransformationDirty)
             {
-                computedTransformation = SkiaSharp.SKMatrix.MakeIdentity();
+                computedTransformation = SKMatrix.MakeIdentity();
                 if (Transformation.HasValue)
                 {
                     var transformationPivot = this.TransformationPivot;
                     var tx = (boundsMinusMargin.Width * transformationPivot.X);
                     var ty = (boundsMinusMargin.Height * transformationPivot.Y);
 
-                    var anchor = SkiaSharp.SKMatrix.MakeTranslation(tx, ty);
-                    var anchorN = SkiaSharp.SKMatrix.MakeTranslation(-tx, -ty);
+                    var anchor = SKMatrix.MakeTranslation(tx, ty);
+                    var anchorN = SKMatrix.MakeTranslation(-tx, -ty);
 
                     computedTransformation = computedTransformation.Concat(anchor).Concat(Transformation.Value)
                                            .Concat(anchorN);
@@ -432,8 +431,8 @@ namespace ModelerClient.DiagramEngine.Core
 
         public virtual void Render(SKCanvas canvas)
         {
-            SkiaSharp.SKMatrix visual = VisualTransform;
-            SkiaSharp.SKMatrix invert = visual.Invert();
+            SKMatrix visual = VisualTransform;
+            SKMatrix invert = visual.Invert();
             canvas.Concat(ref visual);
             Draw(canvas);
             canvas.Concat(ref invert);
@@ -453,7 +452,7 @@ namespace ModelerClient.DiagramEngine.Core
             this.InvalidateArrange();
         }
 
-        public virtual bool IsPointInside(SKPoint point, SkiaSharp.SKMatrix transfromStack)
+        public virtual bool IsPointInside(SKPoint point, SKMatrix transfromStack)
         {
             var mat = transfromStack;//.Concat(this.VisualTransform);
             if (mat.TryInvert(out var invert))

@@ -1,6 +1,6 @@
-﻿using ModelerClient.DiagramEngine.Abstracts;
-using ModelerClient.DiagramEngine.Helpers;
-using ModelerClient.DiagramEngine.Helpers.DeepPropertyChanged;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers.DeepPropertyChanged;
 using SkiaSharp;
 using System;
 using System.Collections;
@@ -9,15 +9,15 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     [ContentProperty("ItemTemplate")]
-    public class HierachicalItemsTemplate : Core.HierarchicalLayoutable
+    public class HierarchicalItemsTemplate : Core.HierarchicalLayoutable
     {
 
-        public static readonly BindableProperty PropsToIgnoreProperty = BindableProperty.Create(nameof(ItemsSourceSelector), typeof(string), typeof(HierachicalItemsTemplate), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(OnPropsToIngoreChanged), null, null, null);
-        public static readonly BindableProperty ItemsSourceSelectorProperty = BindableProperty.Create(nameof(ItemsSourceSelector), typeof(string), typeof(HierachicalItemsTemplate), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(OnItemsSourceSelectorChanged), null, null, null);
-        public static readonly BindableProperty ItemTemplateProperty = BindableProperty.Create(nameof(ItemTemplate), typeof(DataTemplate), typeof(HierachicalItemsTemplate), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(OnItemTemplateChanged), null, null, null);
+        public static readonly BindableProperty PropsToIgnoreProperty = BindableProperty.Create(nameof(ItemsSourceSelector), typeof(string), typeof(HierarchicalItemsTemplate), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(OnPropsToIngoreChanged), null, null, null);
+        public static readonly BindableProperty ItemsSourceSelectorProperty = BindableProperty.Create(nameof(ItemsSourceSelector), typeof(string), typeof(HierarchicalItemsTemplate), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(OnItemsSourceSelectorChanged), null, null, null);
+        public static readonly BindableProperty ItemTemplateProperty = BindableProperty.Create(nameof(ItemTemplate), typeof(DataTemplate), typeof(HierarchicalItemsTemplate), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(OnItemTemplateChanged), null, null, null);
 
         private List<string> propsToIgnoreList;
         public string PropsToIgnore
@@ -56,7 +56,7 @@ namespace ModelerClient.DiagramEngine.Controls
             }
         }
 
-        public HierachicalItemsTemplate()
+        public HierarchicalItemsTemplate()
         {
         }
 
@@ -86,12 +86,12 @@ namespace ModelerClient.DiagramEngine.Controls
                 {
                     foreach (var remove in e.RemoveItems)
                     {
-                        this.Children.Remove(this.Children.First(ie => ((HierachicalNode)ie).Item == remove));
+                        this.Children.Remove(this.Children.First(ie => ((HierarchicalNode)ie).Item == remove));
                     }
                 }
                 if (e.AddedItems != null)
                 {
-                    HierachicalNode parentCtrl = (HierachicalNode)this.Children.FirstOrDefault(ie => ((HierachicalNode)ie).Item == sender);
+                    HierarchicalNode parentCtrl = (HierarchicalNode)this.Children.FirstOrDefault(ie => ((HierarchicalNode)ie).Item == sender);
                     int level = 0;
                     if (parentCtrl != null)
                     {
@@ -104,7 +104,7 @@ namespace ModelerClient.DiagramEngine.Controls
                         {
                             template = (Core.Element)this.ItemTemplate.CreateContent();
                         }
-                        var ctrl = new HierachicalNode(add, level, template);
+                        var ctrl = new HierarchicalNode(add, level, template);
                         if (parentCtrl != null)
                             parentCtrl.ChildrenNode.Add(ctrl);
                         Children.Add(ctrl);
@@ -115,7 +115,7 @@ namespace ModelerClient.DiagramEngine.Controls
 
         private static void OnItemsSourceSelectorChanged(BindableObject bo, object oldValue, object newValue)
         {
-            var hit = (HierachicalItemsTemplate)bo;
+            var hit = (HierarchicalItemsTemplate)bo;
             hit.Monitor();
         }
 
@@ -127,18 +127,18 @@ namespace ModelerClient.DiagramEngine.Controls
 
         private static void OnItemTemplateChanged(BindableObject bo, object oldValue, object newValue)
         {
-            foreach(var child in ((HierachicalItemsTemplate)bo).Children)
+            foreach(var child in ((HierarchicalItemsTemplate)bo).Children)
             {
-                if(child is HierachicalNode)
+                if(child is HierarchicalNode)
                 {
-                    ((HierachicalNode)child).ItemTemplate = (Core.Element)(newValue == null ? null : ((DataTemplate)newValue).CreateContent());
+                    ((HierarchicalNode)child).ItemTemplate = (Core.Element)(newValue == null ? null : ((DataTemplate)newValue).CreateContent());
                 }
             }
         }
 
         private static void OnPropsToIngoreChanged(BindableObject bo, object oldValue, object newValue)
         {
-            var hit = (HierachicalItemsTemplate)bo;
+            var hit = (HierarchicalItemsTemplate)bo;
             if (string.IsNullOrEmpty((string)newValue))
                 hit.propsToIgnoreList = null;
             else

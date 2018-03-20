@@ -1,12 +1,12 @@
-﻿using ModelerClient.DiagramEngine.Core;
-using ModelerClient.DiagramEngine.Helpers;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class TextBlock : Core.View
     {

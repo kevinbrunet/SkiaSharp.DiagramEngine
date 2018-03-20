@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ModelerClient.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Layouts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
 {
     public class Grid : Base
     {

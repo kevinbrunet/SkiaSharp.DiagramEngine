@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Helpers
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers
 {
     public class SKThicknessTypeConverter : TypeConverter
     {

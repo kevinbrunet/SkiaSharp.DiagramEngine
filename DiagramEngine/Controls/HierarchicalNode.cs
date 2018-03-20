@@ -1,20 +1,20 @@
-﻿using ModelerClient.DiagramEngine.Abstracts;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
-    public class HierachicalNode : DiagramEngine.Core.Element
+    public class HierarchicalNode : DiagramEngine.Core.Element
     {
 
         private object item;
         private int level;
-        public List<HierachicalNode> ChildrenNode = new List<HierachicalNode>();
+        public List<HierarchicalNode> ChildrenNode = new List<HierarchicalNode>();
 
-        public HierachicalNode(object item, int level, Abstracts.IElement itemTemplate)
+        public HierarchicalNode(object item, int level, Abstracts.IElement itemTemplate)
         {
             this.item = item;
             this.Level = level;

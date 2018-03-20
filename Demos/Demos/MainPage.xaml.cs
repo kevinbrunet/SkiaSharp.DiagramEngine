@@ -16,7 +16,13 @@ namespace Demos
             this.WithLayout.Pressed += WithLayout_Pressed;
             this.TemplateItems.Pressed += TemplateItems_Pressed;
             this.ZoomCanvas.Pressed += ZoomCanvas_Pressed;
+            this.HierarchicalTemplateItems.Pressed += HierarchicalTemplateItems_Pressed;
 		}
+
+        private void HierarchicalTemplateItems_Pressed(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new HierarchicalItemsTemplate());
+        }
 
         private void ZoomCanvas_Pressed(object sender, EventArgs e)
         {

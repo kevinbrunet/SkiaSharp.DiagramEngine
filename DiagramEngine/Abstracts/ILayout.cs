@@ -1,10 +1,10 @@
-﻿using ModelerClient.DiagramEngine.Core;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Abstracts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts
 {
     /// <summary>
     /// Permet de disposer les enfants au cours des 3 phases (Measure,Arrange et Render)

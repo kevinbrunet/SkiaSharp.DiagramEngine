@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Layouts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
 {
     public sealed class ColumnDefinition : BindableObject, IDefinition
     {

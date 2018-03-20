@@ -3,26 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:de="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
              xmlns:layouts="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
-             x:Class="Demos.WithLayout">
+             xmlns:touchs="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             x:Class="Demos.HierarchicalItemsTemplate">
     <de:Canvas>
+        <de:Canvas.TouchListener>
+            <touchs:XamlCommand>
+                <touchs:Simple/>
+            </touchs:XamlCommand>
+        </de:Canvas.TouchListener>
         <de:Container>
             <de:Container.Layout>
                 <layouts:Grid>
                     <layouts:Grid.ColumnDefinitions>
-                        <layouts:ColumnDefinition Width="70"/>
-                        <layouts:ColumnDefinition Width="Auto"/>
                         <layouts:ColumnDefinition Width="*"/>
-                        <layouts:ColumnDefinition Width="Auto"/>
                     </layouts:Grid.ColumnDefinitions>
                     <layouts:Grid.RowDefinitions>
-                        <layouts:RowDefinition Height="140"/>
                         <layouts:RowDefinition Height="*"/>
                     </layouts:Grid.RowDefinitions>
                 </layouts:Grid>
             </de:Container.Layout>
-            <de:Box layouts:Grid.Column="0" BackgroundColor="green" />
-            <de:TextBlock Text="Hello World !" Color="black" layouts:Grid.Column="1" BackgroundColor="whitesmoke" BorderColor="black" />
-            <de:Oval layouts:Grid.Column="3" Width="100" BackgroundColor="blue" />
+            <de:HierarchicalItemsTemplate BindingContext="{Binding Root}"  ItemsSourceSelector="Children" layouts:Grid.Row="0">
+                <de:HierarchicalItemsTemplate.Layout>
+                    <layouts:HierarchicalTree VerticalSpacing="16" />
+                </de:HierarchicalItemsTemplate.Layout>
+                <DataTemplate>
+                    <de:TextBlock Color="black" Text="{Binding Name}" BorderWidth="1" BorderColor="black" Padding="5"/>
+                </DataTemplate>
+            </de:HierarchicalItemsTemplate>
         </de:Container>
     </de:Canvas>
 </ContentPage>

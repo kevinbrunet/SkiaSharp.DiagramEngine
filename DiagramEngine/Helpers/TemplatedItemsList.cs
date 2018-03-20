@@ -1,4 +1,4 @@
-﻿using ModelerClient.DiagramEngine.Abstracts;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
-namespace ModelerClient.DiagramEngine.Helpers
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers
 {
     public class TemplatedItemsList<TView, TItem> : IList where TView : BindableObject,IItemsTemplate where TItem : BindableObject
     {

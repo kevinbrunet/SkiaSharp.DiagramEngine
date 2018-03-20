@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Layouts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
 {
     public class ColumnDefinitionCollection : DefinitionCollection<ColumnDefinition>
     {

@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Helpers.DeepPropertyChanged
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers.DeepPropertyChanged
 {
     /// <summary>
     /// Source form https://gist.github.com/thojaw/705450#file-collectionchangelistener-cs

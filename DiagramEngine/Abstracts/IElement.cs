@@ -1,8 +1,8 @@
-﻿using ModelerClient.DiagramEngine.Core;
+﻿using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
 using SkiaSharp;
 using System;
 
-namespace ModelerClient.DiagramEngine.Abstracts
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts
 {
     /// <summary>
     /// Représente un élement visuel au sein d'une arborescence

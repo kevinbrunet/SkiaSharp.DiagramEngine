@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Helpers
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers
 {
     public class SKPathTypeConverter : TypeConverter
     {

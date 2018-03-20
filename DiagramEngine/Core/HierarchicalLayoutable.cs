@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using ModelerClient.DiagramEngine.Abstracts;
-using ModelerClient.DiagramEngine.Controls;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Core
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Core
 {
     public class HierarchicalLayoutable : View, IHierarchicalLayoutable
     {
@@ -27,7 +27,7 @@ namespace ModelerClient.DiagramEngine.Core
         {
             if (Layout != null)
             {
-                return Layout.Measure(this.Children.Cast<HierachicalNode>().ToList(), availableSize);
+                return Layout.Measure(this.Children.Cast<HierarchicalNode>().ToList(), availableSize);
             }
             else
             {
@@ -39,7 +39,7 @@ namespace ModelerClient.DiagramEngine.Core
         {
             if (Layout != null)
             {
-                Layout.Arrange(this.Children.Cast<HierachicalNode>().ToList(), childrenBounds);
+                Layout.Arrange(this.Children.Cast<HierarchicalNode>().ToList(), childrenBounds);
             }
             else
             {
@@ -51,7 +51,7 @@ namespace ModelerClient.DiagramEngine.Core
         {
             if (Layout != null)
             {
-                Layout.Render(this.Children.Cast<HierachicalNode>().ToList(), this._childrenBounds, canvas);
+                Layout.Render(this.Children.Cast<HierarchicalNode>().ToList(), this._childrenBounds, canvas);
             }
             else
             {

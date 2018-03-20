@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using ModelerClient.DiagramEngine.Abstracts;
-using ModelerClient.DiagramEngine.Core;
-using ModelerClient.DiagramEngine.Helpers;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using Xamarin.Forms;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     [ContentProperty("ItemTemplate")]
     public class ItemsTemplate : Core.Layoutable, IItemsTemplate

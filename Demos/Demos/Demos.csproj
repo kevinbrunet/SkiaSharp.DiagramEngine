@@ -16,6 +16,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="HierarchicalItemsTemplate.xaml.cs">
+      <DependentUpon>HierarchicalItemsTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ZoomCanvas.xaml.cs">
       <DependentUpon>ZoomCanvas.xaml</DependentUpon>
     </Compile>

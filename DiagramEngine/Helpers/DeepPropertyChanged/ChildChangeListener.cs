@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Helpers.DeepPropertyChanged
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers.DeepPropertyChanged
 {
     /// <summary>
     /// source form https://gist.github.com/thojaw/705450#file-childchangelistener-cs

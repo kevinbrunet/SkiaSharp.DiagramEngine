@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
-namespace ModelerClient.DiagramEngine.Internals
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Internals
 {
     internal sealed class ReadOnlyListAdapter : IList
     {

@@ -2,10 +2,10 @@
 using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using ModelerClient.DiagramEngine.Core;
-using ModelerClient.DiagramEngine.Abstracts;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Core;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Abstracts;
 
-namespace ModelerClient.DiagramEngine.Controls
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     [ContentProperty("Children")]
     public class Canvas : SKCanvasView, ILayoutable
@@ -68,7 +68,7 @@ namespace ModelerClient.DiagramEngine.Controls
         IElement IElement.Parent { get => null; set {}}
         public SKRect Padding { get => surface.Margin; set => surface.Margin = value; }
         SKRect IVisual.Margin { get => SKRect.Empty; set {} }
-        public SkiaSharp.SKMatrix? Transformation { get => surface.Transformation; set => surface.Transformation = value; }
+        public SKMatrix? Transformation { get => surface.Transformation; set => surface.Transformation = value; }
         public SKPoint TransformationPivot { get => surface.TransformationPivot; set => surface.TransformationPivot = value; }
         public bool Visibility { get => surface.Visibility; set => surface.Visibility = value; }
 
@@ -120,7 +120,7 @@ namespace ModelerClient.DiagramEngine.Controls
             return surface.GetElementAtPoint(point, predicate);
         }
 
-        public virtual IElement GetElementAtPoint(SKPoint point, Func<IElement, bool> predicate, SkiaSharp.SKMatrix transformationsStack)
+        public virtual IElement GetElementAtPoint(SKPoint point, Func<IElement, bool> predicate, SKMatrix transformationsStack)
         {
             return surface.GetElementAtPoint(point, predicate);
         }
@@ -155,7 +155,7 @@ namespace ModelerClient.DiagramEngine.Controls
             surface.Draw(canvas);
         }
 
-        public bool IsPointInside(SKPoint point, SkiaSharp.SKMatrix transfromStack)
+        public bool IsPointInside(SKPoint point, SKMatrix transfromStack)
         {
             return surface.IsPointInside(point, transfromStack);
         }

@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 
-namespace ModelerClient.DiagramEngine.Helpers.DeepPropertyChanged
+namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers.DeepPropertyChanged
 {
     /// <summary>
     /// Source form https://gist.github.com/thojaw/705450
