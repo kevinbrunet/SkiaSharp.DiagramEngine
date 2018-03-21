@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using System.ComponentModel;
 
 namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
@@ -74,6 +75,10 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
             {
                 listener = ChangeListener.Create(this.BindingContext, this.ItemsSourceSelector,this.propsToIgnoreList);
                 listener.DeepCollectionChanged += CollectionListener_DeepCollectionChanged;
+                if (this.BindingContext is INotifyPropertyChanged)
+                {
+                    CollectionListener_DeepCollectionChanged(null, new DeepCollectionChangedEventArg(this.ItemsSourceSelector, this.BindingContext, null));
+                }
                 listener.Subscribe();
             }
          }

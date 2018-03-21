@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SkiaSharp;
 using SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;
+using SynodeTechnologies.SkiaSharp.DiagramEngine.Helpers;
 using Xamarin.Forms;
 
 namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
@@ -83,34 +84,52 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
             }
 
             float offsetX = bounds.Left;
-            float offsetY = bounds.Top + (totalSize.Height * heightRatio);
-            foreach (var group in elements.GroupBy(n => n.Level).OrderByDescending(n => n.Key))
+            float offsetY = bounds.Top;
+            List<HierarchicalNode> allreadyPassed = new List<HierarchicalNode>();
+            foreach (var group in elements.GroupBy(n => n.Level))
             {
-                float levelWidth = widthByLevel[group.Key] * widthRatio;
-                float levelHeight = heightByLevel[group.Key] * heightRatio;
-                offsetX = bounds.Left + (bounds.Width - levelWidth) / 2.0f;
-                foreach (var element in group)
+                offsetX = Arrange(group.Key, group, offsetY, offsetX, widthRatio, heightRatio, allreadyPassed);
+            }
+        }
+
+        public float Arrange(int level, IEnumerable<HierarchicalNode> elements,float offsety, float offsetx, float widthRatio, float heightRatio,List<HierarchicalNode> allreadyPassed)
+        {
+            float levelWidth = widthByLevel[level] * widthRatio;
+            float levelHeight = heightByLevel[level] * heightRatio;
+            foreach (var element in elements)
+            {
+                if (allreadyPassed.Contains(element) == false)
                 {
+                    allreadyPassed.Add(element);
                     float elementWidth = (element.DesiredSize.Width * widthRatio);
                     float elementHeight = element.DesiredSize.Height * heightRatio;
-                    float elementOffsetY = offsetY - (levelHeight - elementHeight) / 2.0f - elementHeight;
-                    float elementOffsetX = offsetX;
-                    if(element.ChildrenNode.Count > 0)
+                    float elementOffsetY = offsety + ((levelHeight - elementHeight) / 2.0f);
+                    bool withChild = element.ChildrenNode.Count > 0;
+                    if (withChild)
                     {
-                        var startElem = element.ChildrenNode[0];
-                        var endElem = element.ChildrenNode[element.ChildrenNode.Count -  1];
-                        elementOffsetX = startElem.Bounds.Left + ((endElem.Bounds.Right - startElem.Bounds.Left) / 2.0f) - (elementWidth / 2.0f);
-                        offsetX = endElem.Bounds.Right + HorizontalSpacing;
+                        float startOffset = offsetx;
+                        float endOffset = Arrange(level + 1, element.ChildrenNode, offsety + levelHeight + VerticalSpacing, startOffset, widthRatio, heightRatio, allreadyPassed);
+                        if (FloatUtil.AreClose(endOffset, startOffset))
+                        {
+                            withChild = false;
+                        }
+                        else
+                        {
+                            float elementOffsetX = startOffset + ((endOffset - startOffset - HorizontalSpacing) / 2.0f) - (elementWidth / 2.0f);
+                            SKRect elementBounds = new SKRect(elementOffsetX, elementOffsetY, elementOffsetX + elementWidth, elementOffsetY + elementHeight);
+                            element.Arrange(elementBounds);
+                            offsetx = endOffset;
+                        }
                     }
                     else
                     {
-                        offsetX += elementWidth + HorizontalSpacing;
+                        SKRect elementBounds = new SKRect(offsetx, elementOffsetY, offsetx + elementWidth, elementOffsetY + elementHeight);
+                        element.Arrange(elementBounds);
+                        offsetx += elementWidth + HorizontalSpacing;
                     }
-                    SKRect elementBounds = new SKRect(elementOffsetX, elementOffsetY, elementOffsetX + elementWidth, elementOffsetY + elementHeight);
-                    element.Arrange(elementBounds);
                 }
-                offsetY -= (levelHeight + VerticalSpacing);
             }
+            return offsetx;
         }
 
         public override void Render(IList<HierarchicalNode> elements, SKRect bounds, SKCanvas canvas)
