@@ -27,7 +27,7 @@
                     <layouts:HierarchicalTree VerticalSpacing="16" />
                 </de:HierarchicalItemsTemplate.Layout>
                 <DataTemplate>
-                    <de:TextBlock Color="black" Text="{Binding Name}" BorderWidth="1" BorderColor="black" Padding="10" FontSize="42"/>
+                        <de:TextBlock Color="black" Text="{Binding Name}" BorderWidth="1" BorderColor="black" Padding="10" FontSize="32"/>
                 </DataTemplate>
             </de:HierarchicalItemsTemplate>
         </de:Container>

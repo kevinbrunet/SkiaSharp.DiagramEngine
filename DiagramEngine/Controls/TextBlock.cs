@@ -5,11 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
 {
     public class TextBlock : Core.View
     {
+        public class Line
+        {
+            public string Value { get; set; }
+
+            public float Width { get; set; }
+        }
+
         private static SKTypeface _defaultFont;
         public static SKTypeface DefaultFont { get => _defaultFont = _defaultFont ?? SKTypeface.FromFamilyName("Roboto"); }
 
@@ -82,7 +90,9 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
                 TextSize = FontSize
             })
             {
-                return new SKSize(paint.MeasureText(this.Text), FontSize);
+                var lines = SplitLines(this.Text, paint, availableSize.Width);
+
+                return new SKSize(lines.Max(l => l.Width), lines.Length * FontSize);
             }
         }
 
@@ -97,8 +107,53 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Controls
                 TextSize = FontSize
             })
             {
-                canvas.DrawText(Text, Padding.Left, Padding.Top + FontSize - paint.FontMetrics.Descent, paint);
+                var lines = SplitLines(this.Text, paint, this._childrenBounds.Width);
+                float offsetY = Padding.Top - paint.FontMetrics.Descent;
+                foreach(var line in lines)
+                {
+                    offsetY += (FontSize );
+                    canvas.DrawText(line.Value, Padding.Left, offsetY, paint);
+                }
             }
+        }
+
+
+        private Line[] SplitLines(string text, SKPaint paint, float maxWidth)
+        {
+            var spaceWidth = paint.MeasureText(" ");
+            var lines = text.Split('\n');
+
+            return lines.SelectMany((line) =>
+            {
+                var result = new List<Line>();
+
+                var words = line.Split(new[] { " " }, StringSplitOptions.None);
+
+                var lineResult = new StringBuilder();
+                float width = 0;
+                foreach (var word in words)
+                {
+                    var wordWidth = paint.MeasureText(word);
+                    var wordWithSpaceWidth = wordWidth + spaceWidth;
+                    var wordWithSpace = word + " ";
+
+                    if (width + wordWidth > maxWidth)
+                    {
+                        result.Add(new Line() { Value = lineResult.ToString(), Width = width });
+                        lineResult = new StringBuilder(wordWithSpace);
+                        width = wordWithSpaceWidth;
+                    }
+                    else
+                    {
+                        lineResult.Append(wordWithSpace);
+                        width += wordWithSpaceWidth;
+                    }
+                }
+
+                result.Add(new Line() { Value = lineResult.ToString(), Width = width });
+
+                return result.ToArray();
+            }).ToArray();
         }
     }
 }

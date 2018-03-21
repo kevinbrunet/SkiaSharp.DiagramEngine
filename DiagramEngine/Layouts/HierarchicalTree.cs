@@ -175,7 +175,7 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
                     var midWidthElem = element.Bounds.Left + (element.Bounds.Width / 2.0f);
                     var midWidthChild = child.Bounds.Left + (child.Bounds.Width / 2.0f);
                     var topHeight = element.Bounds.Bottom;
-                    var midHeight = element.Bounds.Bottom + ((child.Bounds.Top - element.Bounds.Bottom) / 2.0f);
+                    var midHeight = element.Bounds.Bottom +(VerticalSpacing /2.0f);
                     var bottomHeight = child.Bounds.Top;
 
                     canvas.DrawLine(midWidthElem,
