@@ -72,7 +72,7 @@ namespace Demos
             root.Children[1].Children.Add(new HierarchicalItem("2.1"));
             root.Children[1].Children.Add(new HierarchicalItem("2.2"));
             root.Children[1].Children.Add(new HierarchicalItem("2.3"));
-            root.Children.Add(new HierarchicalItem("3"));
+            root.Children.Add(new HierarchicalItem("3azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlk"));
             root.Children[2].Children.Add(new HierarchicalItem("3.1"));
             root.Children[2].Children.Add(new HierarchicalItem("3.2"));
             root.Children[2].Children.Add(new HierarchicalItem("3.3"));

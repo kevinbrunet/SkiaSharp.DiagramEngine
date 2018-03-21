@@ -40,33 +40,60 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
         }
 
         private Dictionary<int, float> heightByLevel = new Dictionary<int, float>();
-        private Dictionary<int, float> widthByLevel = new Dictionary<int, float>();
 
         private SKSize totalSize;
         public override SKSize Measure(IList<HierarchicalNode> elements, SKSize availableSize)
         {
             heightByLevel.Clear();
-            widthByLevel.Clear();
             float maxWidth = 0;
             float maxHeight = 0;
-            foreach(var group in elements.GroupBy(n => n.Level))
+            List<HierarchicalNode> allreadyPassed = new List<HierarchicalNode>();
+            foreach (var group in elements.GroupBy(n => n.Level))
             {
-                float totalWidthByLevel = 0;
+                maxWidth = Measure(group.Key, group, maxWidth, availableSize,allreadyPassed);
                 float maxHeightByLevel = 0;
                 foreach(var element in group)
                 {
-                    element.Measure(availableSize);
                     maxHeightByLevel = Math.Max(maxHeightByLevel, element.DesiredSize.Height);
-                    totalWidthByLevel += element.DesiredSize.Width + HorizontalSpacing;
                 }
-                totalWidthByLevel -= HorizontalSpacing;
                 heightByLevel.Add(group.Key, maxHeightByLevel);
-                widthByLevel.Add(group.Key, totalWidthByLevel);
-                maxWidth = Math.Max(maxWidth,totalWidthByLevel);
                 maxHeight += maxHeightByLevel + VerticalSpacing;
             }
-            totalSize = new SKSize(maxWidth, maxHeight - VerticalSpacing);
+            totalSize = new SKSize(maxWidth - HorizontalSpacing, maxHeight - VerticalSpacing);
             return totalSize;
+        }
+
+        public float Measure(int level, IEnumerable<HierarchicalNode> elements,float offsetx, SKSize availableSize,List<HierarchicalNode> allreadyPassed)
+        {
+            foreach (var element in elements)
+            {
+                if (allreadyPassed.Contains(element) == false)
+                {
+                    allreadyPassed.Add(element);
+                    element.Measure(availableSize);
+                    bool withChild = element.ChildrenNode.Count > 0;
+                    if (withChild)
+                    {
+                        float startOffset = offsetx;
+                        float endOffset = Measure(level + 1, element.ChildrenNode,startOffset, availableSize,allreadyPassed);
+                        if (FloatUtil.AreClose(endOffset, startOffset))
+                        {
+                            withChild = false;
+                        }
+                        else
+                        {
+                            offsetx = endOffset;
+                            element.Bag.ChildrenWidth = endOffset - startOffset;
+                        }
+                    }
+                    else
+                    {
+                        float elementWidth = element.DesiredSize.Width;
+                        offsetx += elementWidth + HorizontalSpacing;
+                    }
+                }
+            }
+            return offsetx;
         }
 
         public override void Arrange(IList<HierarchicalNode> elements, SKRect bounds)
@@ -94,7 +121,6 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
 
         public float Arrange(int level, IEnumerable<HierarchicalNode> elements,float offsety, float offsetx, float widthRatio, float heightRatio,List<HierarchicalNode> allreadyPassed)
         {
-            float levelWidth = widthByLevel[level] * widthRatio;
             float levelHeight = heightByLevel[level] * heightRatio;
             foreach (var element in elements)
             {
@@ -107,7 +133,12 @@ namespace SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts
                     bool withChild = element.ChildrenNode.Count > 0;
                     if (withChild)
                     {
+                        float childrenWith = element.Bag.ChildrenWidth * widthRatio;
                         float startOffset = offsetx;
+                        if(childrenWith < elementWidth)
+                        {
+                            startOffset += (elementWidth - childrenWith) / 2.0f;
+                        }
                         float endOffset = Arrange(level + 1, element.ChildrenNode, offsety + levelHeight + VerticalSpacing, startOffset, widthRatio, heightRatio, allreadyPassed);
                         if (FloatUtil.AreClose(endOffset, startOffset))
                         {
