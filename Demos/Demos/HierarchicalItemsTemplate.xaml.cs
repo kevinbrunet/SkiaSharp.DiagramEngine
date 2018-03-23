@@ -72,11 +72,11 @@ namespace Demos
             root.Children[1].Children.Add(new HierarchicalItem("2.1"));
             root.Children[1].Children.Add(new HierarchicalItem("2.2"));
             root.Children[1].Children.Add(new HierarchicalItem("2.3"));
-            root.Children.Add(new HierarchicalItem("3azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlk\ndsfsgdfhfghhhfghgfhghfghf"));
+            root.Children.Add(new HierarchicalItem("Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor."));
             root.Children[2].Children.Add(new HierarchicalItem("3.1"));
             root.Children[2].Children.Add(new HierarchicalItem("3.2"));
             root.Children[2].Children.Add(new HierarchicalItem("3.3"));
-            root.Children[2].Children[0].Children.Add(new HierarchicalItem("azertyuiopmlkjhgfdsqwxcvbn"));
+            root.Children[2].Children[0].Children.Add(new HierarchicalItem("Lorem ipsum dolor sit amet"));
             this.BindingContext = this;
 		}
 	}

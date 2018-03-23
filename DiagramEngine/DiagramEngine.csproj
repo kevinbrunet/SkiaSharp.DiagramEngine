@@ -5,14 +5,14 @@
     <AssemblyName>SynodeTechnologies.SkiaSharp.DiagramEngine</AssemblyName>
     <RootNamespace>SynodeTechnologies.SkiaSharp.DiagramEngine</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.7.0</Version>
+    <Version>0.7.1</Version>
     <Authors>Synode Technologies</Authors>
     <Description>Using SkiaSharp with Xaml,Bindings and DataTemplates. Compatible with Xamarin Forms</Description>
     <PackageLicenseUrl>https://github.com/kevinbrunet/SkiaSharp.DiagramEngine/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kevinbrunet/SkiaSharp.DiagramEngine</PackageProjectUrl>
     <PackageTags>xamarin diagram skiasharp xamarin-forms net-standard-2</PackageTags>
-    <AssemblyVersion>0.7.0.0</AssemblyVersion>
-    <FileVersion>0.7.0.0</FileVersion>
+    <AssemblyVersion>0.7.1.0</AssemblyVersion>
+    <FileVersion>0.7.1.0</FileVersion>
     <Company>Synode Technologies</Company>
   </PropertyGroup>
 
