@@ -148,7 +148,7 @@ nuget install SynodeTechnologies.SkiaSharp.DiagramEngine
 
 ![Image of TemplatedItems](https://raw.githubusercontent.com/kevinbrunet/SkiaSharp.DiagramEngine/master/Docs/Images/ItemsTemplate.PNG)
 
-## TemplatedItems
+## ZoomCanvas
 ```xaml
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
@@ -201,3 +201,116 @@ nuget install SynodeTechnologies.SkiaSharp.DiagramEngine
 ```
 
 ![Image of ZoomCanvas](https://raw.githubusercontent.com/kevinbrunet/SkiaSharp.DiagramEngine/master/Docs/Images/Zoom.PNG)
+
+## HierarchicalItemsTemplate
+```xaml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:de="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:layouts="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:touchs="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             x:Class="Demos.HierarchicalItemsTemplate">
+    <de:Canvas>
+        <de:Canvas.TouchListener>
+            <touchs:XamlCommand>
+                <touchs:Simple/>
+            </touchs:XamlCommand>
+        </de:Canvas.TouchListener>
+        <de:Container>
+            <de:Container.Layout>
+                <layouts:Grid>
+                    <layouts:Grid.ColumnDefinitions>
+                        <layouts:ColumnDefinition Width="*"/>
+                    </layouts:Grid.ColumnDefinitions>
+                    <layouts:Grid.RowDefinitions>
+                        <layouts:RowDefinition Height="*"/>
+                    </layouts:Grid.RowDefinitions>
+                </layouts:Grid>
+            </de:Container.Layout>
+            <de:HierarchicalItemsTemplate BindingContext="{Binding Root}"  ItemsSourceSelector="Children" layouts:Grid.Row="0">
+                <de:HierarchicalItemsTemplate.Layout>
+                    <layouts:HierarchicalTree VerticalSpacing="16" />
+                </de:HierarchicalItemsTemplate.Layout>
+                <DataTemplate>
+                        <de:TextBlock Color="black" Text="{Binding Name}" BorderWidth="1" BorderColor="black" Padding="10" FontSize="32"/>
+                </DataTemplate>
+            </de:HierarchicalItemsTemplate>
+        </de:Container>
+    </de:Canvas>
+</ContentPage>
+```
+
+```csharp
+public partial class HierarchicalItemsTemplate : ContentPage
+	{
+        public class HierarchicalItem : INotifyPropertyChanged
+        {
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            public HierarchicalItem(string name)
+            {
+                this.name = name;
+            }
+
+            private string name;
+            public string Name
+            {
+                get
+                {
+                    return name;
+                }
+                set
+                {
+                    name = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                }
+            }
+
+            private ObservableCollection<HierarchicalItem> children = new ObservableCollection<HierarchicalItem>();
+
+            public ObservableCollection<HierarchicalItem> Children
+
+            {
+                get
+                {
+                    return children;
+                }
+            }
+        }
+
+        private HierarchicalItem root;
+        public HierarchicalItem Root
+        {
+            get
+            {
+                return root;
+            }
+           
+        }
+
+
+        public HierarchicalItemsTemplate()
+		{
+			InitializeComponent ();
+            root = new HierarchicalItem("Root");
+            root.Children.Add(new HierarchicalItem("1"));
+            root.Children[0].Children.Add(new HierarchicalItem("1.1"));
+            root.Children[0].Children.Add(new HierarchicalItem("1.2"));
+            root.Children[0].Children.Add(new HierarchicalItem("1.3"));
+            root.Children.Add(new HierarchicalItem("2"));
+            root.Children[1].Children.Add(new HierarchicalItem("2.1"));
+            root.Children[1].Children.Add(new HierarchicalItem("2.2"));
+            root.Children[1].Children.Add(new HierarchicalItem("2.3"));
+            root.Children.Add(new HierarchicalItem("Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor."));
+            root.Children[2].Children.Add(new HierarchicalItem("3.1"));
+            root.Children[2].Children.Add(new HierarchicalItem("3.2"));
+            root.Children[2].Children.Add(new HierarchicalItem("3.3"));
+            root.Children[2].Children[0].Children.Add(new HierarchicalItem("Lorem ipsum dolor sit amet"));
+            this.BindingContext = this;
+		}
+	}
+```
+
+
+![Image of ZoomCanvas](https://raw.githubusercontent.com/kevinbrunet/SkiaSharp.DiagramEngine/master/Docs/Images/HierarchicalItemsTemplate.PNG)
