@@ -12,7 +12,7 @@ nuget install SynodeTechnologies.SkiaSharp.DiagramEngine
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:de="clr-namespace:ModelerClient.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:de="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
              x:Class="Demos.GetStarted">
     <de:Canvas>
         <de:Box Width="50" Height="50" X="30" Y="30" BackgroundColor="green" />
@@ -28,8 +28,8 @@ nuget install SynodeTechnologies.SkiaSharp.DiagramEngine
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:de="clr-namespace:ModelerClient.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
-             xmlns:layouts="clr-namespace:ModelerClient.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:de="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:layouts="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
              x:Class="Demos.WithLayout">
     <de:Canvas>
         <de:Container>
@@ -62,9 +62,9 @@ nuget install SynodeTechnologies.SkiaSharp.DiagramEngine
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:de="clr-namespace:ModelerClient.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
-             xmlns:layouts="clr-namespace:ModelerClient.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
-             xmlns:touchs="clr-namespace:ModelerClient.DiagramEngine.TouchListeners;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:de="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:layouts="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:touchs="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
              x:Class="Demos.TemplateItems">
     <de:Canvas>
         <de:Canvas.TouchListener>
@@ -153,9 +153,9 @@ nuget install SynodeTechnologies.SkiaSharp.DiagramEngine
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:de="clr-namespace:ModelerClient.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
-             xmlns:layouts="clr-namespace:ModelerClient.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
-                xmlns:touchs="clr-namespace:ModelerClient.DiagramEngine.TouchListeners;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:de="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Controls;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+             xmlns:layouts="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.Layouts;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
+                xmlns:touchs="clr-namespace:SynodeTechnologies.SkiaSharp.DiagramEngine.TouchListeners;assembly=SynodeTechnologies.SkiaSharp.DiagramEngine"
          x:Class="Demos.ZoomCanvas">
     <de:ZoomCanvas x:Name="zoomCanvas">
         <de:ZoomCanvas.TouchListener>
